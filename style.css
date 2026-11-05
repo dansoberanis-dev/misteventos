@@ -47,3 +47,12 @@
 .hero-overlay{background:linear-gradient(90deg,rgba(12,8,6,.72) 0%,rgba(12,8,6,.52) 49%,rgba(12,8,6,.44) 100%),linear-gradient(0deg,rgba(13,9,7,.80) 0%,transparent 35%,rgba(13,9,7,.14) 100%)}
 @media(max-width:650px){.hero-overlay{background:linear-gradient(90deg,rgba(12,8,6,.68),rgba(12,8,6,.43)),linear-gradient(0deg,rgba(13,9,7,.80),transparent 45%)}}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}}
+
+/* Ajuste responsivo: animações de entrada não ampliam a largura da página. */
+html,body{max-width:100%;overflow-x:clip}
+@supports not (overflow-x:clip){html,body{overflow-x:hidden}}
+@media(max-width:650px){
+  .about-grid>*,.contact-grid>*,.structure-grid>*,.event-grid>*,.testimonial-grid>*{min-width:0}
+  .address-pill{max-width:100%;white-space:normal;line-height:1.4}
+  .address-pill svg{flex-shrink:0}
+}
