@@ -80,3 +80,31 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
     });
   });
 }
+
+
+// Mobile usa arquivo menor. No desktop, preservamos a versão original.
+const heroVideo = document.querySelector('[data-hero-video]');
+if (heroVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const source = heroVideo.querySelector('source');
+  if (source && window.matchMedia('(min-width: 769px)').matches) {
+    source.src = 'assets/hero-video.mp4';
+  }
+  heroVideo.defaultMuted = true;
+  heroVideo.muted = true;
+  heroVideo.playsInline = true;
+  heroVideo.preload = 'auto';
+  heroVideo.load();
+  const iniciarVideo = () => {
+    const tentativa = heroVideo.play();
+    if (tentativa && typeof tentativa.catch === 'function') {
+      tentativa.catch(() => { /* A imagem de fundo permanece se a reprodução for bloqueada. */ });
+    }
+  };
+  iniciarVideo();
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && heroVideo.paused) iniciarVideo();
+  });
+  document.addEventListener('pointerdown', () => {
+    if (heroVideo.paused) iniciarVideo();
+  }, { once: true });
+}
