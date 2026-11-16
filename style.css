@@ -76,3 +76,10 @@ html,body{max-width:100%;overflow-x:clip}
 .lightbox-pause{width:35px;height:35px;border-radius:50%;font-size:13px}
 .lightbox-close{z-index:2;right:21px;top:21px}
 @media(max-width:650px){.lightbox{width:calc(100vw - 24px);padding:10px}.lightbox-arrow{width:38px;height:38px;font-size:30px}.lightbox-prev{left:5px}.lightbox-next{right:5px}.lightbox-close{right:15px;top:15px}.lightbox-bottom p{font-size:12px}}
+
+/* Crédito de desenvolvimento no rodapé. */
+.footer-bottom{flex-wrap:wrap;gap:12px 24px}
+.footer-credit{color:#b1a494;letter-spacing:.04em}
+.footer-bottom .footer-credit a{color:var(--gold);letter-spacing:normal}
+.footer-bottom .footer-credit a:hover{text-decoration:underline}
+@media(max-width:650px){.footer-bottom{align-items:flex-start}.footer-credit{width:100%}}
